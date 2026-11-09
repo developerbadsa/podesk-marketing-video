@@ -1,0 +1,65 @@
+# PODesk — Official Product Reference
+
+## Official Shopify App Store Listing
+https://apps.shopify.com/podesk-purchase-orders
+
+## Product Information
+Product Name: PODesk
+Product Category: Shopify Purchase Order Management App
+Platform: Shopify
+
+## Purpose of This Reference
+Use this document to understand the real PODesk product, its publicly available features, branding, and product presentation.
+
+The official Shopify App Store listing is a secondary reference. The original screenshots supplied in this repository are the primary visual source of truth.
+
+## Authentic Product Screenshots
+The following original screenshots are provided separately:
+
+- Dashboard
+- Reorder Planning
+- Product Details
+- Supplier Mapping
+- CSV Import
+- Settings
+
+Additional purchase order workflow screenshots may also be provided.
+
+## Product Features to Verify
+Inspect the official listing and supplied screenshots for actual supported functionality, including:
+
+- Inventory and reorder planning
+- Reorder recommendations
+- Product details
+- Supplier management and mapping
+- Purchase order creation and management
+- CSV import
+- Application settings
+- Purchase order printing and document workflow
+
+Only present features that are supported by the real application or official product information.
+
+## Visual Authenticity Rules
+
+1. Never invent PODesk features or UI screens.
+2. Never use AI-generated dashboard interfaces.
+3. Never replace original screenshots with recreated versions.
+4. Never alter actual UI text, product names, quantities, tables, or buttons.
+5. Use the original PODesk logo and app icon supplied in the brand folder.
+6. Treat public Shopify listing images and videos as references, not replacements for supplied original screenshots.
+7. Maintain consistent PODesk branding throughout the video.
+
+## Creative Direction
+
+Create a premium, professional SaaS product advertisement.
+
+The video should communicate how PODesk helps Shopify merchants organize inventory reordering and purchase order workflows.
+
+Primary message:
+Move beyond spreadsheet-based reorder management with PODesk.
+
+Final CTA:
+Explore PODesk on the Shopify App Store.
+
+Official App Store URL:
+https://apps.shopify.com/podesk-purchase-orders
