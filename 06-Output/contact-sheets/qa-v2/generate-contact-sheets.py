@@ -20,6 +20,9 @@ scenes = {
     "scene-2-dashboard-po": [
         (144, "dashboard entrance / inventory sentence"),
         (150, "dashboard establish"),
+        (158, "inventory crop reveal"),
+        (160, "dashboard to metric zoom transition"),
+        (164, "metric zoom settle"),
         (167, "inventory metrics focus"),
         (188, "metric focus exit"),
         (198, "supplier screenshot reveal / suppliers"),

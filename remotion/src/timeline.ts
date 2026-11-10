@@ -1,5 +1,7 @@
 export const FPS = 30;
 export const DURATION_IN_FRAMES = 683;
+export const PRICING_END_CARD_DURATION_IN_FRAMES = 270;
+export const TOTAL_DURATION_IN_FRAMES = DURATION_IN_FRAMES + PRICING_END_CARD_DURATION_IN_FRAMES;
 export const VIDEO_WIDTH = 1080;
 export const VIDEO_HEIGHT = 1920;
 
@@ -122,6 +124,12 @@ export const SCENE_TIMELINE = [
   { id: "supplier-workflow", name: "Supplier Workflow", startFrame: frameAt(10.52), endFrame: frameAt(15.2) },
   { id: "live-chat", name: "24-Hour Live Chat", startFrame: frameAt(15.2), endFrame: frameAt(20.22) },
   { id: "brand-cta", name: "Brand CTA", startFrame: frameAt(20.22), endFrame: DURATION_IN_FRAMES },
+  {
+    id: "pricing-end-card",
+    name: "Pricing End Card",
+    startFrame: DURATION_IN_FRAMES,
+    endFrame: TOTAL_DURATION_IN_FRAMES,
+  },
 ];
 
 export const SCREEN_COORDINATES = {
@@ -134,7 +142,7 @@ export const SCREEN_COORDINATES = {
 
 export const SOURCE_REGIONS = {
   dashboardEstablishing: { x: 0, y: 100, width: 1914, height: 820 },
-  dashboardInventoryCards: { x: 430, y: 218, width: 620, height: 122 },
+  dashboardInventoryCards: { x: 435, y: 218, width: 615, height: 122 },
   supplierContactForm: { x: 320, y: 180, width: 970, height: 440 },
   purchaseOrderCreateButton: { x: 295, y: 710, width: 230, height: 80 },
   purchaseOrderShopifyContext: { x: 0, y: 90, width: 1913, height: 830 },
@@ -215,23 +223,35 @@ export const SHOT_TIMELINE: ShotTimelineEntry[] = [
     cameraPosition: null,
   },
   {
-    id: "dashboard-establishing-to-inventory",
+    id: "dashboard-establishing",
     sceneId: "dashboard-purchase-orders",
     startFrame: frameAt(4.8),
+    endFrame: frameAt(5.5),
+    spokenPhrase: "PO Desk brings",
+    caption: "PO Desk brings",
+    screenshotAsset: "01-dashboard.png",
+    targetElement: "Full PODesk dashboard establishing view",
+    focusCoordinates: [],
+    cursorPath: null,
+    cameraPosition: {
+      keyframes: [{ frame: frameAt(4.8), rect: SOURCE_REGIONS.dashboardEstablishing }],
+      panel: { x: 45, y: 620, width: 990, height: 520 },
+    },
+  },
+  {
+    id: "dashboard-inventory-cards",
+    sceneId: "dashboard-purchase-orders",
+    startFrame: frameAt(5.27),
     endFrame: frameAt(6.6),
-    spokenPhrase: "PO Desk brings inventory",
+    spokenPhrase: "inventory",
     caption: "PO Desk brings inventory",
     screenshotAsset: "01-dashboard.png",
     targetElement: "Stock Health and Total Units metric cards",
     focusCoordinates: [FOCUS_COORDINATES.dashboardStockHealth, FOCUS_COORDINATES.dashboardTotalUnits],
     cursorPath: null,
     cameraPosition: {
-      keyframes: [
-        { frame: frameAt(4.8), rect: SOURCE_REGIONS.dashboardEstablishing },
-        { frame: frameAt(5.33), rect: SOURCE_REGIONS.dashboardEstablishing },
-        { frame: frameAt(5.6), rect: SOURCE_REGIONS.dashboardInventoryCards },
-      ],
-      panel: { x: 45, y: 620, width: 990, height: 520 },
+      keyframes: [{ frame: frameAt(5.27), rect: SOURCE_REGIONS.dashboardInventoryCards }],
+      panel: { x: 55, y: 729, width: 840, height: 200 },
     },
   },
   {

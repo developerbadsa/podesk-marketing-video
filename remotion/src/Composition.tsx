@@ -19,6 +19,7 @@ import {
   SCENE_TIMELINE,
   SCREEN_COORDINATES,
   SHOT_TIMELINE,
+  TOTAL_DURATION_IN_FRAMES,
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
   type CameraKeyframe,
@@ -756,7 +757,8 @@ const SpreadsheetScene: React.FC<{ frame: number }> = ({ frame }) => {
 };
 
 const DashboardAndPurchaseOrderScene: React.FC<{ frame: number }> = ({ frame }) => {
-  const dashboard = getShot("dashboard-establishing-to-inventory");
+  const dashboard = getShot("dashboard-establishing");
+  const inventoryCards = getShot("dashboard-inventory-cards");
   const supplier = getShot("supplier-management");
   const purchaseOrder = getShot("purchase-order-creation");
   const dashboardFocus = [
@@ -778,8 +780,13 @@ const DashboardAndPurchaseOrderScene: React.FC<{ frame: number }> = ({ frame }) 
         shot={dashboard}
         frame={frame}
         fadeFrames={3}
-        focusCues={dashboardFocus}
         masks={PRIVACY_MASKS.dashboard}
+      />
+      <ScreenshotViewport
+        shot={inventoryCards}
+        frame={frame}
+        fadeFrames={3}
+        focusCues={dashboardFocus}
       />
       <ScreenshotViewport shot={supplier} frame={frame} fadeFrames={3} focusCues={supplierFocus} />
       <ScreenshotViewport
@@ -1059,6 +1066,414 @@ const BrandCtaScene: React.FC<{ frame: number }> = ({ frame }) => {
   );
 };
 
+const FreePlanLimit: React.FC<{ prefix: string; amount: string; label: string }> = ({
+  prefix,
+  amount,
+  label,
+}) => (
+  <div
+    style={{
+      minWidth: 0,
+      padding: "0 12px",
+      textAlign: "center",
+      borderLeft: "1px solid #ffffff1c",
+    }}
+  >
+    <div
+      style={{
+        color: COLORS.muted,
+        fontSize: 18,
+        fontWeight: 700,
+        letterSpacing: "0.1em",
+        textTransform: "uppercase",
+      }}
+    >
+      {prefix || "\u00a0"}
+    </div>
+    <div
+      style={{
+        marginTop: 5,
+        color: COLORS.white,
+        fontSize: 43,
+        lineHeight: 1,
+        fontWeight: 760,
+        letterSpacing: "-0.04em",
+      }}
+    >
+      {amount}
+    </div>
+    <div
+      style={{
+        marginTop: 8,
+        color: COLORS.muted,
+        fontSize: 20,
+        lineHeight: 1.2,
+        fontWeight: 600,
+      }}
+    >
+      {label}
+    </div>
+  </div>
+);
+
+const PaidPlanFeature: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: 13, minHeight: 49 }}>
+    <span
+      style={{
+        width: 8,
+        height: 8,
+        flex: "0 0 auto",
+        borderRadius: "50%",
+        background: COLORS.teal,
+        boxShadow: "0 0 14px #20c7a088",
+      }}
+    />
+    <span style={{ color: COLORS.white, fontSize: 22, lineHeight: 1.2, fontWeight: 580 }}>
+      {children}
+    </span>
+  </div>
+);
+
+const PricingEndCard: React.FC<{ frame: number }> = ({ frame }) => {
+  const localFrame = frame - DURATION_IN_FRAMES;
+  if (localFrame < 0) {
+    return null;
+  }
+
+  const fps = FPS;
+  const backgroundIn = interpolate(localFrame, [0, 8], [0, 1], CLAMP);
+  const headlineIn = spring({ frame: Math.max(0, localFrame - 8), fps, config: { damping: 19, stiffness: 100 } });
+  const supportIn = spring({ frame: Math.max(0, localFrame - 16), fps, config: { damping: 18, stiffness: 105 } });
+  const freeIn = spring({ frame: Math.max(0, localFrame - 29), fps, config: { damping: 17, stiffness: 105 } });
+  const proIn = spring({ frame: Math.max(0, localFrame - 82), fps, config: { damping: 18, stiffness: 105 } });
+  const growthIn = spring({ frame: Math.max(0, localFrame - 91), fps, config: { damping: 18, stiffness: 105 } });
+  const shopifyIn = spring({ frame: Math.max(0, localFrame - 117), fps, config: { damping: 18, stiffness: 100 } });
+
+  return (
+    <AbsoluteFill
+      style={{
+        zIndex: 20,
+        opacity: backgroundIn,
+        overflow: "hidden",
+        background:
+          "radial-gradient(ellipse at 50% 35%, #124039 0%, #0b202a 39%, #07131e 75%), linear-gradient(180deg, #0c1c29, #07131e)",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          top: 54,
+          left: 0,
+          right: 0,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 14,
+          opacity: headlineIn,
+          transform: "translateY(" + interpolate(headlineIn, [0, 1], [16, 0]) + "px)",
+        }}
+      >
+        <Img
+          src={media("podesk-app-icon.png")}
+          alt="PODesk app icon"
+          style={{ width: 50, height: 50, borderRadius: 13, display: "block" }}
+        />
+        <span style={{ color: COLORS.white, fontSize: 29, fontWeight: 730, letterSpacing: "-0.035em" }}>
+          PODesk
+        </span>
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          top: 137,
+          left: 48,
+          right: 48,
+          textAlign: "center",
+          opacity: headlineIn,
+          transform: "translateY(" + interpolate(headlineIn, [0, 1], [22, 0]) + "px)",
+        }}
+      >
+        <div
+          style={{
+            color: COLORS.white,
+            fontSize: 78,
+            lineHeight: 0.98,
+            fontWeight: 820,
+            letterSpacing: "-0.055em",
+          }}
+        >
+          START FREE.
+        </div>
+        <div
+          style={{
+            marginTop: 12,
+            color: COLORS.mint,
+            fontSize: 50,
+            lineHeight: 1.05,
+            fontWeight: 720,
+            letterSpacing: "-0.035em",
+          }}
+        >
+          UPGRADE WHEN YOU GROW.
+        </div>
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          top: 320,
+          left: 35,
+          right: 35,
+          textAlign: "center",
+          color: COLORS.white,
+          fontSize: 31,
+          lineHeight: 1.15,
+          fontWeight: 610,
+          opacity: supportIn,
+          transform: "translateY(" + interpolate(supportIn, [0, 1], [12, 0]) + "px)",
+        }}
+      >
+        Paid plans starting at just $9.99/month.
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          top: 408,
+          left: 55,
+          width: 970,
+          height: 420,
+          boxSizing: "border-box",
+          padding: "30px 34px 27px",
+          borderRadius: 31,
+          border: "2px solid #20c7a0",
+          background: "linear-gradient(135deg, #12323a 0%, #0d2530 54%, #0c1d29 100%)",
+          boxShadow: "0 0 0 1px #20c7a022, 0 24px 80px #0007, 0 0 75px #20c7a02a",
+          opacity: freeIn,
+          transform: "translateY(" + interpolate(freeIn, [0, 1], [25, 0]) + "px) scale(" + (0.985 + freeIn * 0.015) + ")",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div>
+            <div
+              style={{
+                color: COLORS.white,
+                fontSize: 40,
+                lineHeight: 1,
+                fontWeight: 800,
+                letterSpacing: "0.005em",
+              }}
+            >
+              FREE PLAN
+            </div>
+            <div style={{ marginTop: 9, color: COLORS.mint, fontSize: 21, fontWeight: 600 }}>
+              No subscription fee
+            </div>
+          </div>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 9, color: COLORS.white }}>
+            <span style={{ fontSize: 82, lineHeight: 0.94, fontWeight: 820, letterSpacing: "-0.06em" }}>
+              $0
+            </span>
+            <span style={{ color: COLORS.muted, fontSize: 25, fontWeight: 620 }}>/month</span>
+          </div>
+        </div>
+        <div
+          style={{
+            marginTop: 25,
+            height: 1,
+            background: "linear-gradient(90deg, #20c7a077, #ffffff18, transparent)",
+          }}
+        />
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1.25fr 0.82fr",
+            alignItems: "center",
+            marginTop: 26,
+          }}
+        >
+          <FreePlanLimit prefix="UP TO" amount="250" label="SKUs" />
+          <FreePlanLimit prefix="UP TO" amount="10" label="purchase orders / month" />
+          <FreePlanLimit prefix="" amount="1" label="location" />
+        </div>
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          top: 872,
+          left: 55,
+          width: 474,
+          height: 408,
+          boxSizing: "border-box",
+          padding: "28px 30px",
+          borderRadius: 26,
+          border: "2px solid #20c7a099",
+          background: "linear-gradient(145deg, #112b35, #0c1c29)",
+          boxShadow: "0 18px 55px #0005, 0 0 35px #20c7a012",
+          opacity: proIn,
+          transform: "translateY(" + interpolate(proIn, [0, 1], [24, 0]) + "px)",
+        }}
+      >
+        <div style={{ color: COLORS.mint, fontSize: 34, fontWeight: 780, letterSpacing: "0.025em" }}>
+          PRO
+        </div>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 7, marginTop: 8, color: COLORS.white }}>
+          <span style={{ fontSize: 47, lineHeight: 1, fontWeight: 800, letterSpacing: "-0.045em" }}>
+            $9.99
+          </span>
+          <span style={{ color: COLORS.muted, fontSize: 22, fontWeight: 620 }}>/month</span>
+        </div>
+        <div style={{ marginTop: 20, height: 1, background: "#ffffff20" }} />
+        <div style={{ marginTop: 14, display: "flex", flexDirection: "column" }}>
+          <PaidPlanFeature>Up to 1,500 SKUs</PaidPlanFeature>
+          <PaidPlanFeature>Up to 100 purchase orders / month</PaidPlanFeature>
+          <PaidPlanFeature>Up to 3 locations</PaidPlanFeature>
+        </div>
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          top: 872,
+          left: 551,
+          width: 474,
+          height: 408,
+          boxSizing: "border-box",
+          padding: "28px 30px",
+          borderRadius: 26,
+          border: "1px solid #ffffff27",
+          background: "linear-gradient(145deg, #10232d, #0b1924)",
+          opacity: growthIn * 0.84,
+          transform: "translateY(" + interpolate(growthIn, [0, 1], [24, 0]) + "px)",
+        }}
+      >
+        <div style={{ color: COLORS.muted, fontSize: 31, fontWeight: 740, letterSpacing: "0.035em" }}>
+          GROWTH
+        </div>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 7, marginTop: 10, color: COLORS.white }}>
+          <span style={{ fontSize: 42, lineHeight: 1, fontWeight: 760, letterSpacing: "-0.045em" }}>
+            $19.99
+          </span>
+          <span style={{ color: COLORS.muted, fontSize: 21, fontWeight: 610 }}>/month</span>
+        </div>
+        <div style={{ marginTop: 22, height: 1, background: "#ffffff18" }} />
+        <div style={{ marginTop: 16, display: "flex", flexDirection: "column" }}>
+          <PaidPlanFeature>Unlimited SKUs</PaidPlanFeature>
+          <PaidPlanFeature>Unlimited purchase orders</PaidPlanFeature>
+          <PaidPlanFeature>Unlimited locations</PaidPlanFeature>
+        </div>
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          top: 1400,
+          left: 75,
+          width: 930,
+          height: 153,
+          boxSizing: "border-box",
+          padding: "20px 29px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 22,
+          borderRadius: 25,
+          border: "1px solid #ffffff30",
+          background: "linear-gradient(100deg, #ffffff0a, #20c7a016, #ffffff0a)",
+          boxShadow: "0 16px 50px #0004",
+          opacity: shopifyIn,
+          transform: "translateY(" + interpolate(shopifyIn, [0, 1], [20, 0]) + "px)",
+        }}
+      >
+        <div
+          style={{
+            width: 68,
+            height: 68,
+            flex: "0 0 auto",
+            borderRadius: 17,
+            display: "grid",
+            placeItems: "center",
+            background: "#ffffff",
+            boxShadow: "0 10px 28px #0005",
+          }}
+        >
+          <Img src={media("shopify-mark.svg")} alt="Shopify" style={{ width: 39, height: 44, display: "block" }} />
+        </div>
+        <div>
+          <div
+            style={{
+              color: COLORS.muted,
+              fontSize: 20,
+              lineHeight: 1.15,
+              fontWeight: 650,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+            }}
+          >
+            Find PODesk on
+          </div>
+          <div
+            style={{
+              marginTop: 7,
+              color: COLORS.white,
+              fontSize: 36,
+              lineHeight: 1,
+              fontWeight: 760,
+              letterSpacing: "-0.035em",
+            }}
+          >
+            Shopify App Store
+          </div>
+        </div>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 1583,
+          left: 50,
+          right: 50,
+          textAlign: "center",
+          color: COLORS.muted,
+          fontSize: 20,
+          fontWeight: 550,
+          letterSpacing: "0.015em",
+          opacity: shopifyIn,
+        }}
+      >
+        apps.shopify.com/podesk-purchase-orders
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 1654,
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          color: "#8ba3ad",
+          fontSize: 19,
+          fontWeight: 520,
+          opacity: shopifyIn,
+        }}
+      >
+        Free and Pro plan usage limits apply.
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 1740,
+          left: 300,
+          right: 300,
+          height: 1,
+          background: "linear-gradient(90deg, transparent, #20c7a055, transparent)",
+          opacity: shopifyIn,
+        }}
+      />
+    </AbsoluteFill>
+  );
+};
+
 export const PODeskPromo: React.FC = () => {
   const frame = useCurrentFrame();
 
@@ -1081,6 +1496,7 @@ export const PODeskPromo: React.FC = () => {
       <BrandCtaScene frame={frame} />
       <VoiceCaption frame={frame} />
       <Audio src={media("voiceover-v2-live-chat.mp3")} volume={1} />
+      <PricingEndCard frame={frame} />
     </AbsoluteFill>
   );
 };
@@ -1089,5 +1505,5 @@ export const videoConfig = {
   width: VIDEO_WIDTH,
   height: VIDEO_HEIGHT,
   fps: FPS,
-  durationInFrames: DURATION_IN_FRAMES,
+  durationInFrames: TOTAL_DURATION_IN_FRAMES,
 };

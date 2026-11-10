@@ -1,54 +1,41 @@
-# Remotion video
+# PODesk Promo Remotion Project
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+A frame-accurate portrait product advertisement for PODesk.
 
-Welcome to your Remotion project!
+## Video specification
 
-## Commands
+- 1080 × 1920 (9:16)
+- 30 FPS
+- 953 frames (683-frame original ad plus a 270-frame silent pricing end card)
+- Voiceover: 01-Voiceover/voiceover-v2-live-chat.mp3 (22.753 seconds)
+- H.264 MP4 output
 
-**Install Dependencies**
+## Build and render
 
-```console
-npm i --loglevel=error
-```
+From this directory, run: npm ci, npm run lint, or npm run dev.
 
-**Start Preview**
+Preview render: npm run render:preview
+Final render: npm run render:final
 
-```console
-npm run dev
-```
+The preview script writes ../06-Output/previews/podesk-pricing-review-v3.mp4. The final script writes ../06-Output/final/podesk-final-v3-pricing.mp4. These scripts write versioned pricing outputs and leave the earlier v2 exports intact.
 
-**Render video**
+## Source layout
 
-```console
-npx remotion render
-```
+- src/Composition.tsx — scenes, native motion graphics, captions, camera crop mapping, cursor, highlights, masks, and audio.
+- src/timeline.ts — transcript segments, caption beats, native screenshot dimensions, source-coordinate crops, focus targets, cursor events, scene timing, and shot records.
+- public/media/ — unchanged copies of the selected latest screenshots, PODesk icon, Shopify bag mark, and v2 voiceover.
 
-**Upgrade Remotion**
+## Scene order
 
-```console
-npx remotion upgrade
-```
+1. Spreadsheet Hook
+2. Dashboard & Purchase Orders
+3. Supplier Workflow
+4. 24-Hour Live Chat
+5. Brand CTA
+6. Silent three-tier pricing end card, with the original Shopify App Store CTA
 
-## Docs
+The pricing end card leads with the $0/month Free plan and its limits, then shows Pro at $9.99/month and Growth at $19.99/month. The Free plan is not presented as a trial or promotion. The voiceover and original five-scene section remain unchanged.
 
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
+The spreadsheet at the opening is an illustrative problem-state graphic. 02-reorder-planning.png is the actual Purchase Order creation form; it is used for that workflow and is not presented as a reorder recommendation table. A dedicated reorder recommendation screenshot was not supplied.
 
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+All supplied screenshots remain unmodified. The video uses native-coordinate crop windows and non-destructive privacy overlays. No human figures, faces, bodies, hands, avatars, characters, or mascots are used.
