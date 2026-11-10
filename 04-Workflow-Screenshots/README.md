@@ -18,3 +18,4 @@ This directory contains specialized workflow and operational screenshots from th
 2. **Dedicated Product Details:** There is currently no confirmed dedicated Product Details screenshot supplied in this repository.
 3. **Privacy Notice:** This screenshot contains a visible test email (`reopro190@gmail.com`) and test store URL in the browser bar. When framing this scene in Remotion, apply a non-destructive blur or localized overlay above the email input field and crop out the browser URL bar.
 4. **Print Preview:** A separate standalone Print Preview PDF screenshot is currently not supplied. Only show Print Preview if an authentic capture is provided later; never fabricate an unofficial PO document.
+

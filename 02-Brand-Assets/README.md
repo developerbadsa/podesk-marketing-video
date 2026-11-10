@@ -12,3 +12,4 @@ This directory contains verified brand assets for PODesk and associated platform
 1. **Official Wordmark:** An official vector PODesk wordmark SVG is currently unavailable. Do not fabricate or invent an unofficial SVG logo. In the video, combine `podesk-app-icon.png` with clean, professionally typeset "PODesk" typography (using Inter / sans-serif font).
 2. **Shopify Attribution:** Use `shopify-mark.svg` alongside typeset text "Available on the Shopify App Store" or official badges when needed. Never imply that PODesk is owned or operated by Shopify.
 3. **Integrity:** Never modify, re-color, or distort brand assets.
+

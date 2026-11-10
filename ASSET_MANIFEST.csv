@@ -12,3 +12,4 @@ SCREEN_06,01-purchase-order-details.png,04-Workflow-Screenshots/01-purchase-orde
 SCREEN_07,product-details.png,04-Workflow-Screenshots/product-details.png,image/png,Dedicated individual product details interface,missing,None,none,clean,No dedicated product details screenshot exists in PODesk.
 SCREEN_08,po-print-preview.pdf,04-Workflow-Screenshots/po-print-preview.pdf,document/pdf,Authentic printed PDF purchase order preview document,missing,Scene 3 (optional),none,clean,"Optional asset. Only include if authentic capture is provided, never fabricate."
 REF_01,shopify-app-listing.txt,05-Reference/shopify-app-listing.txt,text/plain,Official Shopify App Store listing URL and product metadata reference,available,Reference,original,clean,Primary reference for store URL and listing details.
+

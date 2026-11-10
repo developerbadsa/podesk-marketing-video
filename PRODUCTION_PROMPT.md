@@ -101,3 +101,4 @@
 2. **Crop Windows/Chrome:** Using Remotion CSS/framing (`overflow: hidden`, dynamic coordinate offsets), crop out browser title bars, URL search fields, Windows taskbars, and personal profile icons.
 3. **Keep Interface Sharp:** When zooming into 1600×900 screenshots inside a 1080×1920 canvas, ensure interpolation uses high-quality filtering (`image-rendering: auto`, crisp scaling without pixelation).
 4. **Legibility First:** Maintain clear contrast between on-screen caption text and underlying screenshot backgrounds at all times.
+

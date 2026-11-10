@@ -12,3 +12,4 @@ This directory is reserved exclusively for rendered video exports, preview cuts,
 
 1. Keep all rendered outputs strictly isolated from the source assets in `01-Voiceover`, `02-Brand-Assets`, `03-Original-App-Screenshots`, and `04-Workflow-Screenshots`.
 2. Do not commit heavy intermediate video renders or cache files to version control without approval.
+

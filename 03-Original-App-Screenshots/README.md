@@ -16,3 +16,4 @@ This directory contains the authentic, high-resolution original screenshots capt
 2. **Binary Integrity:** Never re-encode, compress, or overwrite these original PNG files.
 3. **Framing & Privacy:** The screenshots contain browser chrome and test store data. For the 9:16 vertical video composition, crop out browser navigation and taskbars, and apply non-destructive localized masks over test identifiers (such as dev store URLs). Do not permanently edit the source files.
 4. **Note on Product Details:** There is no dedicated Product Details screenshot in this directory. Purchase Order Details is located in `04-Workflow-Screenshots/`.
+

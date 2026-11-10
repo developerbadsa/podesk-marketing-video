@@ -82,3 +82,4 @@ This repository is optimized for autonomous development with Claude Code Cloud:
    Review `CLAUDE.md` and `PRODUCTION_PROMPT.md` for frame-accurate timing, camera pan/zoom coordinates, and caption synchronization.
 4. **Export Location:**
    All rendered video files (`.mp4`) must be saved into `06-Output/final/`.
+

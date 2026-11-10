@@ -63,3 +63,4 @@ Before triggering a final render:
 2. Generate an asset contact sheet or preview stills for each scene transition.
 3. Validate typography, caption sync, and audio levels (`voiceover.mp3` normalized with subtle background bed if used).
 4. Verify that the call-to-action points to the official live listing: `https://apps.shopify.com/podesk-purchase-orders`.
+

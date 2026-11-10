@@ -94,3 +94,4 @@ The original screenshots were captured on an authentic development/staging envir
 1. **Dedicated Product Details Screenshot (`product-details.png`):** Missing. No dedicated individual product view exists. Do not create an empty placeholder.
 2. **Authentic Print Preview PDF (`po-print-preview.pdf`):** Missing. In Scene 3, focus camera motion on the high-contrast `Print PO` button on the actual PO Details interface. Never fabricate a synthetic PO PDF document.
 3. **Official PODesk Wordmark:** Use typeset typography in Remotion alongside `podesk-app-icon.png`.
+
